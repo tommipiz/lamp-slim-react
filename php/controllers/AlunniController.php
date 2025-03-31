@@ -25,8 +25,6 @@ class AlunniController
       //inserisco nel db
       $response->getBody()->write(json_encode(array("message"=>"Success")));
       return $response->withHeader("Content-Type", "application/json")->withStatus(201);
-
-      return $response;
     }
 
 
