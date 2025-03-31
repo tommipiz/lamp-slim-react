@@ -6,12 +6,20 @@ require __DIR__ . '/controllers/AlunniController.php';
 
 $app = AppFactory::create();
 
+//curl http://localhost:8080/alunni
 $app->get('/alunni', "AlunniController:index");
-$app->get('/alunni{id}', "AlunniController:show");
-$app->post('/alunni', "AlunniController:create");
-$app->put('/alunni{id}', "AlunniController:update");
-$app->delete('/alunni{id}', "AlunniController:destroy");
 
+//curl http://localhost:8080/alunni/2
+$app->get('/alunni/{id:\d+}', "AlunniController:show");
+
+//curl http://localhost:8080/alunni -H "Contenct-Type: application/json" -d '{"nome:ciccio}'
+$app->post('/alunni', "AlunniController:create");
+
+//curl http://localhost:8080/alunni/2 -H "Contenct-Type: application/json" -d '{"nome:ciccio}'
+$app->put('/alunni{id}', "AlunniController:update");
+
+//curl -X PUT http://localhost:8080/alunni/2 -H "Contenct-Type: application/json" -d '{"nome:ciccio}'
+$app->delete('/alunni{id}', "AlunniController:destroy");
 
 
 $app->run();

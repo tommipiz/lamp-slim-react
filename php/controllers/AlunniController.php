@@ -17,6 +17,18 @@ class AlunniController
       return $response;
     }
 
+    public function create(Request $request, Response $response, $args) {
+      $body = json_decode($request->getBody()->getContents(),true);
+      $nome = $body["nome"];
+      $cognome = $body["cognome"];
+
+      //inserisco nel db
+      $response->getBody()->write(json_encode(array("message"=>"Success")));
+      return $response->withHeader("Content-Type", "application/json")->withStatus(201);
+
+      return $response;
+    }
+
 
   }
 }
