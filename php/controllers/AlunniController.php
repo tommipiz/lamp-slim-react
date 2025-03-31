@@ -11,5 +11,12 @@ class AlunniController
 
     $response->getBody()->write(json_encode($results));
     return $response->withHeader("Content-type", "application/json")->withStatus(200);
+
+    public function show(Request $request, Response $response, $args ) {
+      $response->getBody()->write("ciao". $args["id"]);
+      return $response;
+    }
+
+
   }
 }
